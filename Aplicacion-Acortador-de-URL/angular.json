@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "Aplicacion-Acortador-de-URL"
+  "defaultProject": "Aplicacion-Acortador-de-URL",
+  "cli": {
+    "analytics": false
+  }
 }
