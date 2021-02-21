@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AcortadorUrlComponent } from './components/acortador-url/acortador-url.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AcortadorUrlComponent
+    AcortadorUrlComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
