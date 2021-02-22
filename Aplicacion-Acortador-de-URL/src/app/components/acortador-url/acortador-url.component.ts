@@ -11,6 +11,7 @@ export class AcortadorUrlComponent implements OnInit {
   nombreURL: string = ''
   urlAcortado: string = ''
   urlProcesado: boolean = false
+  loading: boolean = false
 
   constructor(private acortadorUrlService: AcortadorUrlService) {}
 
@@ -19,8 +20,17 @@ export class AcortadorUrlComponent implements OnInit {
 
   procesarURL() {
     this.urlProcesado = false
-    this.acortadorUrlService.getUrlAcortador(this.nombreURL).subscribe(data => {
-       this.urlProcesado = true
+    this.loading = true
+
+    setTimeout(() => {
+      this.obtenerUrlAcortado()
+    }, 3000);
+  }
+
+  obtenerUrlAcortado(){
+     this.acortadorUrlService.getUrlAcortador(this.nombreURL).subscribe(data => {
+      this.loading = false
+      this.urlProcesado = true
       this.urlAcortado = data.link
     })
   }
