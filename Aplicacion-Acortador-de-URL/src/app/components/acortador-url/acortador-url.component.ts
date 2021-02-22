@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcortadorUrlComponent implements OnInit {
 
-  constructor() { }
+  nombreURL: string = ''
+  urlAcortado: string = ''
+  urlProcesado: boolean = false
+
+  constructor() {}
 
   ngOnInit(): void {
   }
