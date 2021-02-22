@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AcortadorUrlService } from 'src/app/services/acortador-url.service';
 
 @Component({
   selector: 'app-acortador-url',
@@ -11,9 +12,17 @@ export class AcortadorUrlComponent implements OnInit {
   urlAcortado: string = ''
   urlProcesado: boolean = false
 
-  constructor() {}
+  constructor(private acortadorUrlService: AcortadorUrlService) {}
 
   ngOnInit(): void {
+  }
+
+  procesarURL() {
+    this.urlProcesado = false
+    this.acortadorUrlService.getUrlAcortador(this.nombreURL).subscribe(data => {
+       this.urlProcesado = true
+      this.urlAcortado = data.link
+    })
   }
 
 }
