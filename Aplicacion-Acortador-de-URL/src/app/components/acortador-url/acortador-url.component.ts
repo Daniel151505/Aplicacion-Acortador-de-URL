@@ -49,9 +49,17 @@ export class AcortadorUrlComponent implements OnInit {
       this.loading = false;
       this.urlProcesado = true;
       this.urlAcortado = data.link;
+    }, error => {
+      this.loading = false;
+      this.nombreURL = '';
+      console.log(error);
+      if(error.error.description === 'The value provided is invalid.')  {
+        this.error('La URL ingresada es invalida')
+      }
     })
   }
 
+ 
 
 }
 
