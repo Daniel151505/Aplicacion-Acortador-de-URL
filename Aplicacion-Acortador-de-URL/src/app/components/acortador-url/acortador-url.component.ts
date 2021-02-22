@@ -12,6 +12,8 @@ export class AcortadorUrlComponent implements OnInit {
   urlAcortado: string = ''
   urlProcesado: boolean = false
   loading: boolean = false
+  mostrarError: boolean = false
+  textError: string = ''
 
   constructor(private acortadorUrlService: AcortadorUrlService) {}
 
@@ -19,20 +21,39 @@ export class AcortadorUrlComponent implements OnInit {
   }
 
   procesarURL() {
+
+    //Validando si la URL es vacia
+
+    if (this.nombreURL === '') {
+      this.mostrarError = true
+      this.textError = 'Por favor Ingrese una url'
+      
+      //Mostrando Error por 4 segundos
+      setTimeout(() => {
+        this.mostrarError = false
+      }, 4000 );
+      
+      return
+    }
+
     this.urlProcesado = false
     this.loading = true
 
     setTimeout(() => {
-      this.obtenerUrlAcortado()
+      this.obtenerUrlAcortado();
     }, 3000);
   }
 
-  obtenerUrlAcortado(){
-     this.acortadorUrlService.getUrlAcortador(this.nombreURL).subscribe(data => {
-      this.loading = false
-      this.urlProcesado = true
-      this.urlAcortado = data.link
+  obtenerUrlAcortado() {
+    this.acortadorUrlService.getUrlAcortador(this.nombreURL).subscribe(data => {
+      this.loading = false;
+      this.urlProcesado = true;
+      this.urlAcortado = data.link;
     })
   }
 
+
 }
+
+
+
