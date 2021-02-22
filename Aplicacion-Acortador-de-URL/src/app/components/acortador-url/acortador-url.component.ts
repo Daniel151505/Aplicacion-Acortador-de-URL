@@ -20,28 +20,23 @@ export class AcortadorUrlComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  procesarURL() {
+ procesarURL() {
 
-    //Validando si la URL es vacia
+    // Validar si la url es vacia ''
+    if(this.nombreURL === '') {
+     this.error('Por favor ingrese una URL');
 
-    if (this.nombreURL === '') {
-      this.mostrarError = true
-      this.textError = 'Por favor Ingrese una url'
-      
-      //Mostrando Error por 4 segundos
-      setTimeout(() => {
-        this.mostrarError = false
-      }, 4000 );
-      
-      return
+      return;
     }
 
-    this.urlProcesado = false
-    this.loading = true
+    this.urlProcesado = false;
+    this.loading = true;
 
     setTimeout(() => {
       this.obtenerUrlAcortado();
-    }, 3000);
+    }, 4000);
+
+  
   }
 
   obtenerUrlAcortado() {
@@ -68,8 +63,5 @@ export class AcortadorUrlComponent implements OnInit {
       this.mostrarError = false;
     }, 4000);
   }
-
 }
-
-
 
