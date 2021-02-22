@@ -59,7 +59,15 @@ export class AcortadorUrlComponent implements OnInit {
     })
   }
 
- 
+  error(valor: string) {
+    this.mostrarError = true;
+    this.textError = valor;
+
+    // Mostramos error por 4 segundos
+    setTimeout(() => {
+      this.mostrarError = false;
+    }, 4000);
+  }
 
 }
 
